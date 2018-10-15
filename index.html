@@ -15,7 +15,7 @@
                     <div class="hero-body">
                       <div class="container">
                         <h1 class="title">
-                            Apresentação pífia...
+                            Apresentação pífia
                         </h1>
                         <h2 class="subtitle">
                           Gráfico em linha
@@ -47,7 +47,7 @@
                   <div class="field">
                     <label class="label">Suas notas</label>
                     <div class="control">
-                      <input type="number" id="notas" class="textarea" placeholder="Insira suas notas separadas por (-)" pattern="\d*" />
+                      <input type="tel" id="notas" class="textarea" placeholder="Insira suas notas separadas por (-)" pattern="\d*" />
                     </div>
                   </div>
                   
@@ -68,7 +68,7 @@ let title, text;
 function read(){
     title = document.getElementById("disciplina").value;
     text = document.getElementById("notas").value;
-    array = text.split("-");
+    array = text.split(" ");
 
     console.log(typeof array)
 
