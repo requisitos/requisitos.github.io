@@ -28,14 +28,14 @@
             <div class="field">
                     <label class="label">Disciplina</label>
                     <div class="control">
-                      <input id="disciplina" class="input" type="text" placeholder="Nome da disciplina">
+                      <input id="disciplina" class="input" type="text" placeholder="Nome da disciplina" required>
                     </div>
                   </div>
                   
                   <div class="field">
                     <label class="label">Suas notas</label>
                     <div class="control">
-                      <input type="tel" id="notas" class="textarea" placeholder="Insira suas notas separadas por espaço" pattern="\d*" />
+                      <input type="tel" id="notas" class="textarea" placeholder="Insira suas notas separadas por espaço" pattern="\d*" required/>
                     </div>
                   </div>
                   
@@ -57,7 +57,7 @@ function read(){
     title = document.getElementById("disciplina").value;
     text = document.getElementById("notas").value;
     array = text.split(" ");
-
+    
     console.log(typeof array)
 
     var ctx = document.getElementById('myChart').getContext('2d');
