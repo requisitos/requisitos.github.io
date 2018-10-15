@@ -1,86 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
-    <link rel="stylesheet" href="main.css">
-    <title>Sistema de Acompanhamento de Notas</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+  <link rel="stylesheet" href="main.css">
+  <title>Sistema de Acompanhamento de Notas</title>
 </head>
+
 <body>
-    <header>
-            <section class="hero is-dark">
-                    <div class="hero-body">
-                      <div class="container">
-                        <h1 class="title">
-                            Apresentação I
-                        </h1>
-                        <h2 class="subtitle">
-                          Gráfico em linha
-                        </h2>
-                      </div>
-                    </div>
-                  </section>
-    </header>
-    <main>
-            <div class="field">
-                    <label class="label">Disciplina</label>
-                    <div class="control">
-                      <input id="disciplina" class="input" type="text" placeholder="Nome da disciplina" required>
-                    </div>
-                  </div>
-                  
-                  <div class="field">
-                    <label class="label">Suas notas</label>
-                    <div class="control">
-                      <input type="tel" id="notas" class="textarea" placeholder="Insira suas notas separadas por espaço" pattern="\d*" required/>
-                    </div>
-                  </div>
-                  
-                  <div class="field is-grouped">
-                    <div class="control">
-                      <button id="read" class="button is-danger">Gerar gráfico</button>
-                    </div>
-                  </div>
-        
-                  <canvas id="myChart" style="height: 300px"></canvas>
-    </main>
+  <header>
+    <section class="hero is-dark">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Apresentação I
+          </h1>
+          <h2 class="subtitle">
+            Gráfico em linha
+          </h2>
+        </div>
+      </div>
+    </section>
+  </header>
+  <main>
+    <div class="field">
+      <label class="label">Disciplina</label>
+      <div class="control">
+        <input id="disciplina" class="input" type="text" placeholder="Nome da disciplina" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Suas notas</label>
+      <div class="control">
+        <input type="tel" id="notas" class="textarea" placeholder="Insira suas notas separadas por espaço" pattern="\d*"
+          required />
+      </div>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <button id="read" class="button is-danger">Gerar gráfico</button>
+      </div>
+    </div>
+
+    <canvas id="myChart" style="height: 300px"></canvas>
+  </main>
 </body>
 <script>
 
-let array = [];
-let title, text;
+  let array = [];
+  let title, text, err = false;
+  let aux = [];
 
-function read(){
+  function read() {
     title = document.getElementById("disciplina").value;
     text = document.getElementById("notas").value;
     array = text.split(" ");
-    
+
+    // const a = array.length()
+    // console.log(typeof array)
+    // var k = Object.keys(array).length
+    // console.log(k)
+
+    for (let i=0; i<(Object.keys(array).length); i++){
+      aux.push(i+1 + 'ª nota');
+      if (array[i]<0 || array[i]>10){
+        alert(array[i] + ' não é uma nota válida');
+        err = true;
+      }
+    }
+
+    // array.forEach(element => {
+    //   aux.push()
+    //   if (element<0 || element>10){
+    //     alert(element + ' não é uma nota válida');
+    //     err = true;
+    //   }
+    // });
+
+    if (err) return;
+
     console.log(typeof array)
 
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
-       
-        type: 'line',
 
-        data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [{
-                label: title,
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: array,
-            }]
-        },
+      type: 'line',
 
-        options: {}
+      data: {
+        labels: aux,
+        datasets: [{
+          label: title,
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: array,
+        }]
+      },
+
+      options: {}
     });
 
-}
+  }
 
-document.getElementById("read").onclick = read;
+  document.getElementById("read").onclick = read;
 
 </script>
+
 </html>
