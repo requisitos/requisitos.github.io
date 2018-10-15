@@ -47,7 +47,7 @@
                   <div class="field">
                     <label class="label">Suas notas</label>
                     <div class="control">
-                      <input type="number" id="notas" class="textarea" placeholder="Insira suas notas separadas por espaço" pattern="\d*" />
+                      <input type="number" id="notas" class="textarea" placeholder="Insira suas notas separadas por (-)" pattern="\d*" />
                     </div>
                   </div>
                   
@@ -57,7 +57,7 @@
                     </div>
                   </div>
         
-                  <canvas id="myChart"></canvas>
+                  <canvas id="myChart" style="height: 300px"></canvas>
     </main>
 </body>
 <script>
@@ -68,7 +68,7 @@ let title, text;
 function read(){
     title = document.getElementById("disciplina").value;
     text = document.getElementById("notas").value;
-    array = text.split(" ");
+    array = text.split("-");
 
     console.log(typeof array)
 
