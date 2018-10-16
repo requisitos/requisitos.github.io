@@ -56,7 +56,7 @@
 
     <div class="field is-grouped">
       <div class="control">
-        <button id="read" class="button is-danger">Gerar gráfico</button>
+        <button id="read" class="button is-primary">Gerar gráfico</button>
       </div>
     </div>
 
@@ -65,7 +65,7 @@
     <article class="message is-danger" id="alerta" style="display: none; margin-top: 7%; margin-bottom: 3%;">
       <div class="message-header">
         <p>Cuidado</p>
-        <button class="delete" aria-label="delete"></button>
+        <button class="delete" aria-label="delete" id="hideCard"></button>
       </div>
       <div class="message-body">
         Sua média está abaixo do esperado
@@ -131,8 +131,8 @@
         labels: aux,
         datasets: [{
           label: title,
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgb(123,104,238)',
+          borderColor: 'rgb(106,90,205)',
           data: array,
         }]
       },
