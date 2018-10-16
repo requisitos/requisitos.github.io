@@ -35,6 +35,18 @@
     </div>
 
     <div class="field">
+      <label class="label">Tipo de gráfico</label>
+      <div class="control">
+        <div class="select">
+          <select id="option">
+            <option value="line">Gráfico em Linha</option>
+            <option value="bar">Gráfico em Barras</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
       <label class="label">Suas notas</label>
       <div class="control">
         <input type="tel" id="notas" class="textarea" placeholder="Insira suas notas separadas por espaço" pattern="\d*"
@@ -48,7 +60,18 @@
       </div>
     </div>
 
-    <canvas id="myChart" style="height: 300px"></canvas>
+    <canvas id="myChart"></canvas>
+
+    <article class="message is-danger" id="alerta" style="display: none; margin-top: 7%; margin-bottom: 3%;">
+      <div class="message-header">
+        <p>Cuidado</p>
+        <button class="delete" aria-label="delete"></button>
+      </div>
+      <div class="message-body">
+        Sua média está abaixo do esperado
+      </div>
+    </article>
+
   </main>
 </body>
 <script>
@@ -56,11 +79,23 @@
   let array = [];
   let title, text, err = false;
   let aux = [];
+  let option;
 
   function read() {
     title = document.getElementById("disciplina").value;
+    option = document.getElementById("option").value;
     text = document.getElementById("notas").value;
-    array = text.split(" ");
+    array = text.split("+");
+
+    let sum = 0;
+    let x = document.getElementById("alerta");
+    array.forEach(element => {
+      sum += parseInt(element, 10);
+    });
+    console.log(sum);
+    if (sum/(Object.keys(array).length) < 7){
+        x.style.display = "block";
+    }
 
     // const a = array.length()
     // console.log(typeof array)
@@ -90,7 +125,7 @@
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
 
-      type: 'line',
+      type: option,
 
       data: {
         labels: aux,
