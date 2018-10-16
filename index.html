@@ -62,15 +62,20 @@
 
     <canvas id="myChart"></canvas>
 
-    <article class="message is-danger" id="alerta" style="display: none; margin-top: 7%; margin-bottom: 3%;">
+    <!-- <article class="message is-danger" id="alerta" style="display: none; margin-top: 7%; margin-bottom: 3%;">
       <div class="message-header">
         <p>Cuidado</p>
         <button class="delete" aria-label="delete" id="hideCard"></button>
       </div>
       <div class="message-body">
-        Sua média está abaixo do esperado
+        Até o momento sua média é <
       </div>
-    </article>
+    </article> -->
+
+    <div id="alerta" class="notification is-danger" style="display: none; margin-top: 7%; margin-bottom: 3%;">
+      <button class="delete" id="hideCard"></button>
+      Sua média é <strong id="media"></strong> e está abaixo da média esperada que é <strong>7</strong>
+    </div>
 
   </main>
 </body>
@@ -93,9 +98,11 @@
       sum += parseInt(element, 10);
     });
     console.log(sum);
-    if (sum/(Object.keys(array).length) < 7){
+    const media = sum/(Object.keys(array).length);
+    if (media < 7){
         x.style.display = "block";
     }
+    document.getElementById("media").innerHTML = media.toFixed(2);
 
     // const a = array.length()
     // console.log(typeof array)
