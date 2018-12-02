@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My awesome project</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <!-- Reference to firebase libary -->
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+</head>
+
+<body>
+    <header>
+        <section class="hero is-dark">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        Login system
+                    <!-- </h1>
+                    <h2 class="subtitle" id="displayName">
+                        Você não está autenticado
+                    </h2> -->
+                </div>
+            </div>
+        </section>
+    </header>
+    <main>
+
+        <div id="user-form">
+            <!-- <div class="field">
+                <label class="label">Name</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input id="name" class="input" type="text" placeholder="First name">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                </div>
+            </div> -->
+            <div class="field">
+                <label class="label">E-mail</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input id="email" class="input" type="text" placeholder="example@example.com">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-id-badge"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input id="password" class="input" type="password" placeholder="Strong password">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-key"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button id="send" class="button is-primary">Create</button>
+                    <!-- <button id="send" class="button is-link" onclick="register()">Submit</button> -->
+                </div>
+                <div class="control">
+                    <button id="authUser" class="button is-primary">Login</button>
+                </div>
+                <div class="control">
+                    <button id="createGoogleUser" class="button is-primary">Google</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="profile" class="card article">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-center">
+                        <img id="profilePicture" src="http://www.radfaces.com/images/avatars/daria-morgendorffer.jpg" class="author-image"
+                            alt="Placeholder image">
+                    </div>
+                    <div class="media-content has-text-centered">
+                        <p class="title article-title" id="profileName"></p>
+                        <p class="subtitle is-6 article-subtitle">
+                            <a href="#">@daria</a> on February 17, 2018
+                        </p>
+                    </div>
+                </div>
+                <div class="content article-body">
+                    <p>
+                        Hello!
+                    </p>
+                    <div class="control">
+                        <button id="logout" class="button is-primary">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <script src="app.js"></script>
+    <script src="authentication.js"></script>
+</body>
+
+</html>
