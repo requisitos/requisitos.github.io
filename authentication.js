@@ -70,7 +70,7 @@ firebase
         if (user) {
             // User is signed in.
             console.log(user);
-            window.location = 'index.html';
+            // window.location = 'index.html';
         } else {
             // No user is signed in.
             console.log('not logged in');
